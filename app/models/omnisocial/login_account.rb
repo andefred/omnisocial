@@ -14,7 +14,7 @@ module Omnisocial
     embedded_in :user, :class_name => 'Omnisocial::User', :inverse_of => :login_account
 
     def self.find_or_create_from_auth_hash(auth_hash)
-      if (account = first(:conditions => {:remote_account_id => auth_hash['uid']})
+      if (account = first(:conditions => {:remote_account_id => auth_hash['uid']}))
         account.assign_account_info(auth_hash)
         account.save
         account
