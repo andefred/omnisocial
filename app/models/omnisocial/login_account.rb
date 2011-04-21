@@ -15,7 +15,7 @@ module Omnisocial
 
     def self.find_or_create_from_auth_hash(auth_hash)
       if (user = ::User.first(:conditions => {"login_account.remote_account_id" => auth_hash['uid']}))
-        acount = user.login_account
+        account = user.login_account
         account.assign_account_info(auth_hash)
         account.save!
         account
@@ -28,7 +28,7 @@ module Omnisocial
       user = ::User.new
       user.login_account = new
       user.login_account.assign_account_info(auth_hash)
-      user.save(false)
+      user.save!
       user.login_account
     end
   end
