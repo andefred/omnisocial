@@ -1,8 +1,9 @@
 module Omnisocial
-  class User < ActiveRecord::Base
-    self.abstract_class = true
+  class User
+    include Mongoid::Document
+    include Mongoid::Timestamps
     
-    has_one :login_account, :class_name => 'Omnisocial::LoginAccount', :dependent => :destroy
+    embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
     delegate :login, :name, :picture_url, :account_url, :access_token, :access_token_secret, :to => :login_account
 
     def to_param

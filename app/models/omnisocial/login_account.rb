@@ -1,6 +1,7 @@
 module Omnisocial
-  class LoginAccount < ActiveRecord::Base
-    belongs_to :user
+  class LoginAccount
+    include Mongoid::Document
+    embedded_in :user, :class_name => 'Omnisocial::User', :inverse_of => :login_account
 
     def self.find_or_create_from_auth_hash(auth_hash)
       if (account = find_by_remote_account_id(auth_hash['uid']))
