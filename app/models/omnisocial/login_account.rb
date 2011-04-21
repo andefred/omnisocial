@@ -26,6 +26,7 @@ module Omnisocial
 
     def self.create_from_auth_hash(auth_hash)
       user = ::User.new
+      user.login_account = new
       user.login_account.assign_account_info(auth_hash)
       user.login_account
     end
