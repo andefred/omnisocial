@@ -22,7 +22,7 @@ module Omnisocial
           Omnisocial::GithubAccount.find_or_create_from_auth_hash(request.env['rack.auth'])
       end
 
-      self.current_user = account.find_or_create_user
+      self.current_user = account.user
 
       flash[:notice] = 'You have logged in successfully.'
       redirect_back_or_default(root_path)
