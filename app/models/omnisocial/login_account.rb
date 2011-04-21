@@ -28,7 +28,7 @@ module Omnisocial
       user = ::User.new
       user.login_account = new
       user.login_account.assign_account_info(auth_hash)
-      user.save!
+      user.save(false)
       user.login_account
     end
   end
