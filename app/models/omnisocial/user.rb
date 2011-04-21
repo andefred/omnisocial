@@ -2,7 +2,7 @@ module Omnisocial
   class User
     include Mongoid::Document
     include Mongoid::Timestamps
-    
+    field :remember_token
     embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
     delegate :login, :name, :picture_url, :account_url, :access_token, :access_token_secret, :to => :login_account
 

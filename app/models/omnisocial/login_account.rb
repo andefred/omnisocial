@@ -1,6 +1,16 @@
 module Omnisocial
   class LoginAccount
     include Mongoid::Document
+    
+    field :type
+    field :user_id
+    field :remote_account_id
+    field :name
+    field :login
+    field :picture_url
+    field :access_token
+    field :access_token_secret
+    
     embedded_in :user, :class_name => 'Omnisocial::User', :inverse_of => :login_account
 
     def self.find_or_create_from_auth_hash(auth_hash)
