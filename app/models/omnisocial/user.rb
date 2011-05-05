@@ -5,7 +5,7 @@ module Omnisocial
     field :remember_token
     embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
     delegate :login, :name, :picture_url, :account_url, :access_token, :access_token_secret, :to => :login_account
-
+    
     def to_param
       if !self.login.include?('profile.php?')
         "#{self.id}-#{self.login.gsub('.', '-')}"
