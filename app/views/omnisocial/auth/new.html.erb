@@ -1,3 +1,4 @@
+<%content_for :content do%>
 <div id="omnisocial-login">
   <% if flash[:error] -%>
     <div class="error">
@@ -23,3 +24,4 @@
   <%= github_login_button %>
   <%= linkedin_login_button %>
 </div>
+<%end%>
