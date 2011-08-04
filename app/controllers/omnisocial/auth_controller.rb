@@ -1,6 +1,6 @@
 module Omnisocial
   class AuthController < ApplicationController
-
+    layout "startpage"
     unloadable
 
     def new
