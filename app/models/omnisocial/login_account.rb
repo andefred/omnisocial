@@ -18,6 +18,7 @@ module Omnisocial
         user.last_login_date = Time.now
         if(user.login_count == nil)
           user.login_count = 1
+        end
         user.login_count++
         account = user.login_account
         account.assign_account_info(auth_hash)
