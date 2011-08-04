@@ -16,6 +16,8 @@ module Omnisocial
     def self.find_or_create_from_auth_hash(auth_hash)
       if (user = ::User.first(:conditions => {"login_account.remote_account_id" => auth_hash['uid']}))
         user.last_login_date = Time.now
+        if(user.login_count == nil)
+          user.login_count = 1
         user.login_count++
         account = user.login_account
         account.assign_account_info(auth_hash)
